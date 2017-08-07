@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="bundle.js"></script>
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      position: absolute;
+      height: 240px;
+      width: 240px;
+      background: red;
+      z-index: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="t1" style="top: 100px;left: 50%;"></div>
+  <div class="box" id="t2" style="top: 500px;left: 500px; width: 40px; height: 40px"></div>
+</body>
+<script>
+  new Guide([
+    {
+      selector: '#t1',
+      src: 'img/pic-1.png',
+      delay: 500,
+      before: function (done) {
+        done()
+      },
+      handler: function (el, img, option) {
+        return {
+          x: -img.width + el.offsetWidth + (img.height - el.offsetWidth) / 2,
+          y: -(img.height - el.offsetHeight) / 2
+        }
+      }
+    },
+    {
+      selector: '#t2',
+      src: 'img/pic-1.png',
+      handler: function (el, img, option) {
+        return {
+          x: -img.width + el.offsetWidth + (img.height - el.offsetWidth) / 2,
+          y: -(img.height - el.offsetHeight) / 2
+        }
+      }
+    }
+  ])
+
+</script>
+
+</html>
